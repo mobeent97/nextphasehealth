@@ -1,5 +1,8 @@
+from dotenv import load_dotenv
 from pathlib import Path
 import os
+
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env"))
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -54,8 +57,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get("DATABASE_NAME"),
+        'USER': os.environ.get("DATABASE_USER"),
+        'PASSWORD': os.environ.get("DATABASE_PASSWORD"),
+        'HOST': os.environ.get("DATABASE_HOST"),
+        'PORT': os.environ.get("DATABASE_PORT"),
     }
 }
 
@@ -93,3 +100,9 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'UTC'
+
+# Define where the Vector DB (Chroma) will store data locally
+CHROMA_DB_PATH = os.path.join(BASE_DIR, "chroma_db_data")
+
+# OpenAI Key (Make sure this is loaded from .env)
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
