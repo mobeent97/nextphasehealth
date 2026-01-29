@@ -106,3 +106,8 @@ CHROMA_DB_PATH = os.path.join(BASE_DIR, "chroma_db_data")
 
 # OpenAI Key (Make sure this is loaded from .env)
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+#GHL CONFIG
+GHL_ACCESS_TOKEN = os.getenv("GHL_ACCESS_TOKEN")
+GHL_FIELD_SCORE_ID = os.getenv("GHL_FIELD_SCORE_ID")
+GHL_FIELD_SUMMARY_ID = os.getenv("GHL_FIELD_SUMMARY_ID")
