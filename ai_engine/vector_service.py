@@ -1,6 +1,6 @@
 from django.conf import settings
-from langchain_openai import OpenAIEmbeddings
-from langchain_chroma import Chroma
+from langchain_community.embeddings import OpenAIEmbeddings
+from langchain_community.vectorstores import Chroma
 import os
 
 class VectorService:

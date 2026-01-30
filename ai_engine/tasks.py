@@ -2,8 +2,8 @@ import json
 import requests
 from celery import shared_task
 from django.conf import settings
-from langchain_openai import ChatOpenAI
-from langchain.prompts import ChatPromptTemplate
+from langchain_community.chat_models import ChatOpenAI
+from langchain_core.prompts import ChatPromptTemplate
 from core.models import Candidate
 from .vector_service import VectorService
 
